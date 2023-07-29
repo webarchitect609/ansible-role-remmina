@@ -1,0 +1,25 @@
+---
+- name: "Refresh apt sources list"
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 600
+
+- name: "Ensure dependencies are installed"
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - "gpgv"
+      - "gnupg"
+      - "dirmngr"
+
+- name: "Add repository"
+  ansible.builtin.apt_repository:
+    repo: "{{ remmina_deb_source }}"
+    state: "present"
+
+- name: "Install Remmina"
+  ansible.builtin.apt:
+    name: "{{ remmina_packages }}"
+    state: present

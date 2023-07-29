@@ -1,0 +1,7 @@
+---
+remmina_deb_source: "ppa:remmina-ppa-team/remmina-next"
+
+remmina_packages:
+  - "remmina"
+  - "remmina-plugin-rdp"
+  - "remmina-plugin-secret"
